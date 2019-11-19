@@ -1,0 +1,15 @@
+keep learning from examples :)
+
+version 0 ("plain" python) : 243s
+
+version numba jit : >2.6s
+
+version numba cuda : <0.68s
+
+
+
+mandel code mostly sourced from https://github.com/harrism/numba_examples/blob/master/mandelbrot_numba.ipynb
+(minor updates for py3,  jit deprecated annotation, larger mandel size)
+
+running example: python mandel_0.py
+
