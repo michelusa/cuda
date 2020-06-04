@@ -32,7 +32,29 @@ int main()
 
 	cout << "CUDA Total global mem: " << device_props.totalGlobalMem / (1048576.0) << " MB" << endl;
 
-	GPU_mt_info << <2, 10 >> > ();
+
+	cudaEvent_t start;
+	cudaEvent_t end;
+	float duration;
+
+	cudaEventCreate(&start);
+	cudaEventCreate(&end);
+
+	cudaEventRecord(start);
+	GPU_mt_info << <5, 10 >> > ();
 	cudaDeviceSynchronize();
+	cudaEventRecord(end);
+	cudaEventSynchronize(end);
+
+
+	//https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__EVENT.html#group__CUDART__EVENT_1g40159125411db92c835edb46a0989cd6
+	cudaEventElapsedTime(&duration, start, end);
+	printf("Duration = %f ms.\n", duration);
+	cudaEventDestroy(start);
+	cudaEventDestroy(end);
+
+
+	cudaDeviceSynchronize();
+
 
 }
