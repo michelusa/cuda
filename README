@@ -1,3 +1,8 @@
 getting the toes wet on CUDA with c++ and python
+================================================
+
+* cc: cuda 101 from c++ / c
+
+* python and mandel: using from python, mandelbro fractal example
 
 conda install numba cudatoolkit pyculib
